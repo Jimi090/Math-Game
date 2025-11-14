@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Math game</title>
+        <link href="styles.css" rel="stylesheet" />
+        <link
+            rel="apple-touch-icon"
+            sizes="180x180"
+            href="favicon/apple-touch-icon.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="32x32"
+            href="favicon/favicon-32x32.png"
+        />
+        <link
+            rel="icon"
+            type="image/png"
+            sizes="16x16"
+            href="favicon/favicon-16x16.png"
+        />
+        <link rel="manifest" href="favicon/site.webmanifest" />
+    </head>
+    <body>
+        <header>
+            <div id="appName">Math Game</div>
+            <div id="gameOptionsContainer">
+                <div class="gameOptions" id="Addition">Addition</div>
+                <div class="gameOptions" id="Substraction">Substraction</div>
+                <div class="gameOptions" id="Multiplication">
+                    Multiplication
+                </div>
+                <div class="gameOptions" id="Division">Division</div>
+            </div>
+        </header>
+        <main>
+            <div id="welcomePage">
+                Welcome to Mental Math Game!
+                <ul id="gameDescription">
+                    <li>
+                        Solve addition, subtraction, multiplication, and
+                        division problems.
+                    </li>
+                    <li>
+                        Progress through 20 levels of increasing difficulty.
+                    </li>
+                    <li>
+                        If you have any problems you can look at this guide:
+                        <a
+                            target="_blank"
+                            href="https://visaldiary.wordpress.com/wp-content/uploads/2011/07/secrets-of-mental-math.pdf"
+                            >link</a
+                        >
+                    </li>
+                </ul>
+            </div>
+            <div id="winPage">
+                <div id="winText">
+                    You won&nbsp;
+                    <div id="winTypeText"></div>
+                    !
+                </div>
+                <div id="restartButtonContainer">
+                    <div style="width: 100%; color: #0d1b2a">
+                        If you are bored, you can try again from level 1 (-:
+                    </div>
+                    <div id="restartButton">Restart</div>
+                </div>
+            </div>
+            <div id="additionContainer" class="allGameContainer">
+                <div class="mainHeader">
+                    <div class="operationName">Addition</div>
+                    <div class="level">
+                        Level&nbsp;
+                        <div class="levelNumber">1</div>
+                    </div>
+                    <div class="progressBarContainer">
+                        <div class="progressBarPrecent">90%</div>
+                        <div class="progressBar"></div>
+                    </div>
+                </div>
+                <div class="gameContainer">
+                    <div class="gameProblem">3+3=?</div>
+                    <input
+                        type="number"
+                        class="answerField"
+                        placeholder="Type your answer here"
+                    />
+                </div>
+            </div>
+            <div id="substractionContainer" class="allGameContainer">
+                <div class="mainHeader">
+                    <div class="operationName">Substraction</div>
+                    <div class="level">
+                        Level&nbsp;
+                        <div class="levelNumber">1</div>
+                    </div>
+                    <div class="progressBarContainer">
+                        <div class="progressBarPrecent">90%</div>
+                        <div class="progressBar"></div>
+                    </div>
+                </div>
+                <div class="gameContainer">
+                    <div class="gameProblem">6-3=?</div>
+                    <input
+                        type="number"
+                        class="answerField"
+                        placeholder="Type your answer here"
+                    />
+                </div>
+            </div>
+            <div id="multiplicationContainer" class="allGameContainer">
+                <div class="mainHeader">
+                    <div class="operationName">Multiplication</div>
+                    <div class="level">
+                        Level&nbsp;
+                        <div class="levelNumber">1</div>
+                    </div>
+                    <div class="progressBarContainer">
+                        <div class="progressBarPrecent">90%</div>
+                        <div class="progressBar"></div>
+                    </div>
+                </div>
+                <div class="gameContainer">
+                    <div class="gameProblem">3*3=?</div>
+                    <input
+                        type="number"
+                        class="answerField"
+                        placeholder="Type your answer here"
+                    />
+                </div>
+            </div>
+            <div id="divisionContainer" class="allGameContainer">
+                <div class="mainHeader">
+                    <div class="operationName">Division</div>
+                    <div class="level">
+                        Level&nbsp;
+                        <div class="levelNumber">1</div>
+                    </div>
+                    <div class="progressBarContainer">
+                        <div class="progressBarPrecent">90%</div>
+                        <div class="progressBar"></div>
+                    </div>
+                </div>
+                <div class="gameContainer">
+                    <div class="gameProblem">9/3=?</div>
+                    <input
+                        type="number"
+                        class="answerField"
+                        placeholder="Type your answer here"
+                    />
+                </div>
+            </div>
+        </main>
+        <footer></footer>
+        <script src="main.js"></script>
+    </body>
+</html>
