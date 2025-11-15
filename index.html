@@ -28,34 +28,65 @@
         <header>
             <div id="appName">Math Game</div>
             <div id="gameOptionsContainer">
-                <div class="gameOptions" id="Addition">Addition</div>
-                <div class="gameOptions" id="Substraction">Substraction</div>
-                <div class="gameOptions" id="Multiplication">
+                <div class="gameOptions" data-mode="Addition">Addition</div>
+                <div class="gameOptions" data-mode="Substraction">
+                    Substraction
+                </div>
+                <div class="gameOptions" data-mode="Multiplication">
                     Multiplication
                 </div>
-                <div class="gameOptions" id="Division">Division</div>
+                <div class="gameOptions" data-mode="Division">Division</div>
             </div>
         </header>
         <main>
-            <div id="welcomePage">
-                Welcome to Mental Math Game!
-                <ul id="gameDescription">
-                    <li>
-                        Solve addition, subtraction, multiplication, and
-                        division problems.
-                    </li>
-                    <li>
-                        Progress through 20 levels of increasing difficulty.
-                    </li>
-                    <li>
-                        If you have any problems you can look at this guide:
-                        <a
-                            target="_blank"
-                            href="https://visaldiary.wordpress.com/wp-content/uploads/2011/07/secrets-of-mental-math.pdf"
-                            >link</a
-                        >
-                    </li>
-                </ul>
+            <div id="mainPage">
+                <div id="gameModeText">Choose your game mode!</div>
+                <div id="mainGameOptionsContainer">
+                    <div class="mainGameOption" data-mode="Addition">
+                        <div data-mode="Addition">Addition</div>
+                        <img
+                            data-mode="Addition"
+                            src="media/plus-large-svgrepo-com.svg"
+                            alt="Plus sign"
+                        />
+                    </div>
+                    <div class="mainGameOption" data-mode="Substraction">
+                        <div data-mode="Substraction">Substraction</div>
+                        <img
+                            data-mode="Substraction"
+                            src="media/minus-svgrepo-com.svg"
+                            alt="Minus sign"
+                        />
+                    </div>
+                    <div
+                        class="mainGameOption"
+                        data-mode="Demon"
+                        id="gameOptionDemon"
+                    >
+                        <div data-mode="Demon">Demon mode</div>
+                        <img
+                            data-mode="Demon"
+                            src="media/emoji-evil-svgrepo-com.svg"
+                            alt="Evil emoji"
+                        />
+                    </div>
+                    <div class="mainGameOption" data-mode="Multiplication">
+                        <div data-mode="Multiplication">Multiplication</div>
+                        <img
+                            data-mode="Multiplication"
+                            src="media/multiply-svgrepo-com.svg"
+                            alt="Multiply sign"
+                        />
+                    </div>
+                    <div class="mainGameOption" data-mode="Division">
+                        <div data-mode="Division">Division</div>
+                        <img
+                            data-mode="Division"
+                            src="media/division-svgrepo-com.svg"
+                            alt="Division sign"
+                        />
+                    </div>
+                </div>
             </div>
             <div id="winPage">
                 <div id="winText">
@@ -152,6 +183,34 @@
                         class="answerField"
                         placeholder="Type your answer here"
                     />
+                </div>
+            </div>
+            <div id="popupInstructions">
+                <div id="welcomeText">Welcome to Mental Math Game!</div>
+                <ul id="gameDescription">
+                    <li>
+                        Solve quick addition, subtraction, multiplication, and
+                        division problems.
+                    </li>
+                    <li>
+                        Advance through 20 levels, each getting progressively
+                        more challenging.
+                    </li>
+                    <li>Think fast — accuracy and speed both matter!</li>
+                    <li>
+                        If you need help or want to learn strategies, check out
+                        the guide:
+                        <a
+                            target="_blank"
+                            href="https://visaldiary.wordpress.com/wp-content/uploads/2011/07/secrets-of-mental-math.pdf"
+                            >link</a
+                        >
+                    </li>
+                </ul>
+                <div id="closePopupContainer">
+                    <div id="closePopupText">2+2=?</div>
+
+                    <input type="text" id="closePopupInput" />
                 </div>
             </div>
         </main>

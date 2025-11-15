@@ -26,7 +26,7 @@ function setupGame(type) {
     let substr = document.querySelector('#substractionContainer');
     let multi = document.querySelector('#multiplicationContainer');
     let divis = document.querySelector('#divisionContainer');
-    let welcome = document.querySelector('#welcomePage');
+    let welcome = document.querySelector('#mainPage');
     let winPage = document.querySelector('#winPage');
 
     add.style.display = 'none';
@@ -76,7 +76,6 @@ function setupGame(type) {
                     }
                     setCookieObject('data', data);
                     setupGame(active);
-                    console.log(getCookieObject('data'));
                 }
             });
         }
@@ -164,19 +163,20 @@ function generateProblem(type) {
     }
 }
 document.addEventListener('click', function (e) {
+    //console.log(e.target.dataset.mode);
     if (
-        e.target.id == 'Addition' ||
-        e.target.id == 'Substraction' ||
-        e.target.id == 'Multiplication' ||
-        e.target.id == 'Division'
+        e.target.dataset.mode == 'Addition' ||
+        e.target.dataset.mode == 'Substraction' ||
+        e.target.dataset.mode == 'Multiplication' ||
+        e.target.dataset.mode == 'Division'
     ) {
-        setupGame(e.target.id);
+        setupGame(e.target.dataset.mode);
     } else if (e.target.id == 'appName') {
         let add = document.querySelector('#additionContainer');
         let substr = document.querySelector('#substractionContainer');
         let multi = document.querySelector('#multiplicationContainer');
         let divis = document.querySelector('#divisionContainer');
-        let welcome = document.querySelector('#welcomePage');
+        let welcome = document.querySelector('#mainPage');
 
         add.style.display = 'none';
         substr.style.display = 'none';
@@ -208,5 +208,18 @@ window.addEventListener('load', () => {
             progress: [0, 0, 0, 0],
         };
     }
-    console.log(data);
+    const closePopupInput = document.querySelector('#closePopupInput');
+    let beenThere = getCookieObject('beenThere');
+    if (!beenThere) {
+        document.querySelector('#popupInstructions').style.display = 'block';
+        closePopupInput.addEventListener('input', function (e) {
+            if (closePopupInput.value == '4') {
+                document.querySelector('#popupInstructions').style.display =
+                    'none';
+            }
+            setCookieObject('beenThere', 1);
+        });
+    }
+
+    //console.log(data);
 });
