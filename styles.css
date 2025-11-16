@@ -400,7 +400,8 @@ input[type='number'] {
         padding: 1rem 0;
     }
     .operationName {
-        font-size: 3rem;
+        font-size: 2.5rem;
+        margin-top: 0.5rem;
     }
     .level {
         font-size: 2rem;
@@ -410,7 +411,7 @@ input[type='number'] {
         margin-left: 0;
     }
     .gameProblem {
-        padding: 2rem;
+        padding: 1rem;
         margin-top: 1rem;
         font-size: 4rem;
     }
@@ -431,11 +432,11 @@ input[type='number'] {
         margin-bottom: 2rem;
     }
     .mainGameOption {
-        margin-left: 1.5rem;
     }
     .gameOptions {
         padding: 4px 0rem;
         font-size: 1.5rem;
+        width: fit-content;
     }
     /*############################################################################*/
     .streakContainer {
@@ -446,7 +447,7 @@ input[type='number'] {
         font-size: 1rem;
     }
     .streakContainer img {
-        width: 2rem;
-        height: 2rem;
+        width: 1.5rem;
+        height: 1.5rem;
     }
 }
