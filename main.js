@@ -1,8 +1,8 @@
 const input = document.querySelector('#inputField');
 var active;
 var data;
-var answers = [0, 0, 0, 0];
-var firstTimeUse = [1, 1, 1, 1];
+var answers = [0, 0, 0, 0, 0];
+var firstTimeUse = [1, 1, 1, 1, 1];
 function setCookieObject(name, obj) {
     const value = encodeURIComponent(JSON.stringify(obj));
     const expires = 'Fri, 31 Dec 9999 23:59:59 GMT';
@@ -26,6 +26,7 @@ function setupGame(type) {
     let substr = document.querySelector('#substractionContainer');
     let multi = document.querySelector('#multiplicationContainer');
     let divis = document.querySelector('#divisionContainer');
+    let demon = document.querySelector('#demonContainer');
     let welcome = document.querySelector('#mainPage');
     let winPage = document.querySelector('#winPage');
 
@@ -33,6 +34,7 @@ function setupGame(type) {
     substr.style.display = 'none';
     multi.style.display = 'none';
     divis.style.display = 'none';
+    demon.style.display = 'none';
     welcome.style.display = 'none';
     winPage.style.display = 'none';
 
@@ -50,6 +52,9 @@ function setupGame(type) {
     } else if (type == 'Division') {
         curr = divis;
         currNum = 3;
+    } else if (type == 'Demon') {
+        curr = demon;
+        currNum = 4;
     } else if (type == 'welcomePage') {
         curr = null;
         currNum = 1000;
@@ -63,19 +68,43 @@ function setupGame(type) {
         curr.querySelector('.progressBarPrecent').innerText =
             data.progress[currNum] * 10 + '%';
         curr.querySelector('.gameProblem').innerText = generateProblem(type);
+        curr.querySelector('.streakCount').innerText = data.streak;
+        curr.querySelector('.goodBad img').style.display = 'none';
+
         if (firstTimeUse[currNum]) {
             firstTimeUse[currNum] = 0;
             const inputField = curr.querySelector('.answerField');
             inputField.addEventListener('input', function (e) {
                 if (inputField.value == answers[currNum]) {
-                    data.progress[currNum] += 1;
+                    curr.querySelector('.goodBad img').src =
+                        'media/tick-svgrepo-com.svg';
+                    curr.querySelector('.goodBad img').style.display = 'block';
+                    let multi = 1;
+                    if (data.streak > 16) {
+                        multi = 4;
+                    } else if (data.streak > 8) {
+                        multi = 3;
+                    } else if (data.streak > 3) {
+                        multi = 2;
+                    }
+                    data.progress[currNum] += 1 * multi;
+                    data.streak += 1;
                     inputField.value = '';
-                    if (data.progress[currNum] == 10) {
+                    while (data.progress[currNum] >= 10) {
                         data.levels[currNum] += 1;
-                        data.progress[currNum] = 0;
+                        data.progress[currNum] -= 10;
                     }
                     setCookieObject('data', data);
-                    setupGame(active);
+                    setTimeout(setupGame, 1000, active);
+                } else if (
+                    inputField.value.length ==
+                    answers[currNum].toString().length
+                ) {
+                    data.streak = 0;
+                    curr.querySelector('.streakCount').innerText = data.streak;
+                    curr.querySelector('.goodBad img').src =
+                        'media/cross-small-svgrepo-com.svg';
+                    curr.querySelector('.goodBad img').style.display = 'block';
                 }
             });
         }
@@ -160,6 +189,44 @@ function generateProblem(type) {
         const answer = quotient;
         answers[3] = answer;
         return expression;
+    } else if (type == 'Demon') {
+        let level = data.levels[4];
+        const ops = ['+', '-', '*', '/'];
+        const length = level <= 5 ? 2 : level <= 10 ? 3 : level <= 15 ? 4 : 5;
+        let maxNum =
+            level <= 5 ? 10 : level <= 10 ? 20 : level <= 15 ? 50 : 100;
+        function getNumber() {
+            return Math.floor(Math.random() * maxNum) + 1;
+        }
+        function getSafeDivision(currentValue) {
+            const divisors = [];
+            for (let d = 1; d <= currentValue; d++) {
+                if (currentValue % d === 0) divisors.push(d);
+            }
+            return divisors[Math.floor(Math.random() * divisors.length)];
+        }
+        let numbers = [];
+        let operations = [];
+        let first = getNumber();
+        numbers.push(first);
+        for (let i = 1; i < length; i++) {
+            let op = ops[Math.floor(Math.random() * ops.length)];
+            let num = getNumber();
+
+            if (op === '/') {
+                num = getSafeDivision(numbers[numbers.length - 1]);
+            }
+            operations.push(op);
+            numbers.push(num);
+        }
+        let expression = numbers[0].toString();
+        for (let i = 0; i < operations.length; i++) {
+            expression += ' ' + operations[i] + ' ' + numbers[i + 1];
+        }
+        let result = eval(expression);
+        if (!Number.isInteger(result)) return generateProblem(type);
+        answers[4] = result;
+        return expression;
     }
 }
 document.addEventListener('click', function (e) {
@@ -168,7 +235,8 @@ document.addEventListener('click', function (e) {
         e.target.dataset.mode == 'Addition' ||
         e.target.dataset.mode == 'Substraction' ||
         e.target.dataset.mode == 'Multiplication' ||
-        e.target.dataset.mode == 'Division'
+        e.target.dataset.mode == 'Division' ||
+        e.target.dataset.mode == 'Demon'
     ) {
         setupGame(e.target.dataset.mode);
     } else if (e.target.id == 'appName') {
@@ -176,12 +244,14 @@ document.addEventListener('click', function (e) {
         let substr = document.querySelector('#substractionContainer');
         let multi = document.querySelector('#multiplicationContainer');
         let divis = document.querySelector('#divisionContainer');
+        let demon = this.documentElement.querySelector('#demonContainer');
         let welcome = document.querySelector('#mainPage');
 
         add.style.display = 'none';
         substr.style.display = 'none';
         multi.style.display = 'none';
         divis.style.display = 'none';
+        demon.style.display = 'none';
         welcome.style.display = 'block';
         winPage.style.display = 'none';
     } else if (e.target.id == 'restartButton') {
@@ -195,31 +265,48 @@ document.addEventListener('click', function (e) {
             currNum = 2;
         } else if (type == 'Division') {
             currNum = 3;
+        } else if (type == 'Demon') {
+            currNum = 4;
         }
         data.levels[currNum] = 1;
         setupGame(active);
+    } else if (e.target.id == 'guideButtonContainer') {
+        document.querySelector('#popupInstructions').style.display = 'block';
+        document.querySelector('#overlay').style.display = 'block';
+
+        closePopupInput.value = '';
+        closePopupInput.addEventListener('input', function (e) {
+            if (closePopupInput.value == '4') {
+                document.querySelector('#popupInstructions').style.display =
+                    'none';
+                document.querySelector('#overlay').style.display = 'none';
+            }
+        });
     }
 });
 window.addEventListener('load', () => {
     data = getCookieObject('data');
     if (!data) {
         data = {
-            levels: [1, 1, 1, 1],
-            progress: [0, 0, 0, 0],
+            levels: [1, 1, 1, 1, 1],
+            progress: [0, 0, 0, 0, 0],
+            streak: 0,
         };
     }
     const closePopupInput = document.querySelector('#closePopupInput');
     let beenThere = getCookieObject('beenThere');
     if (!beenThere) {
         document.querySelector('#popupInstructions').style.display = 'block';
+        document.querySelector('#overlay').style.display = 'block';
+        closePopupInput.value = '';
         closePopupInput.addEventListener('input', function (e) {
             if (closePopupInput.value == '4') {
                 document.querySelector('#popupInstructions').style.display =
                     'none';
+                document.querySelector('#overlay').style.display = 'none';
             }
             setCookieObject('beenThere', 1);
         });
     }
-
     //console.log(data);
 });

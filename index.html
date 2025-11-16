@@ -39,6 +39,7 @@
             </div>
         </header>
         <main>
+            <div id="guideButtonContainer">Guide</div>
             <div id="mainPage">
                 <div id="gameModeText">Choose your game mode!</div>
                 <div id="mainGameOptionsContainer">
@@ -90,12 +91,13 @@
             </div>
             <div id="winPage">
                 <div id="winText">
-                    You won&nbsp;
+                    <div>You won</div>
+                    &nbsp;
                     <div id="winTypeText"></div>
                     !
                 </div>
                 <div id="restartButtonContainer">
-                    <div style="width: 100%; color: #0d1b2a">
+                    <div style="width: 100%; color: #778da9">
                         If you are bored, you can try again from level 1 (-:
                     </div>
                     <div id="restartButton">Restart</div>
@@ -103,6 +105,17 @@
             </div>
             <div id="additionContainer" class="allGameContainer">
                 <div class="mainHeader">
+                    <div class="streakContainer">
+                        <img
+                            src="media/fire-svgrepo-com.svg"
+                            alt="Fire emoji"
+                        />
+                        <div class="streakTextContainer">
+                            Streak:&nbsp;
+                            <div class="streakCount">10</div>
+                        </div>
+                    </div>
+
                     <div class="operationName">Addition</div>
                     <div class="level">
                         Level&nbsp;
@@ -114,6 +127,12 @@
                     </div>
                 </div>
                 <div class="gameContainer">
+                    <div class="goodBad">
+                        <img
+                            src="media/tick-svgrepo-com.svg"
+                            alt="Tick emoji"
+                        />
+                    </div>
                     <div class="gameProblem">3+3=?</div>
                     <input
                         type="number"
@@ -124,6 +143,16 @@
             </div>
             <div id="substractionContainer" class="allGameContainer">
                 <div class="mainHeader">
+                    <div class="streakContainer">
+                        <img
+                            src="media/fire-svgrepo-com.svg"
+                            alt="Fire emoji"
+                        />
+                        <div class="streakTextContainer">
+                            Streak:&nbsp;
+                            <div class="streakCount">10</div>
+                        </div>
+                    </div>
                     <div class="operationName">Substraction</div>
                     <div class="level">
                         Level&nbsp;
@@ -135,6 +164,12 @@
                     </div>
                 </div>
                 <div class="gameContainer">
+                    <div class="goodBad">
+                        <img
+                            src="media/tick-svgrepo-com.svg"
+                            alt="Tick emoji"
+                        />
+                    </div>
                     <div class="gameProblem">6-3=?</div>
                     <input
                         type="number"
@@ -145,6 +180,16 @@
             </div>
             <div id="multiplicationContainer" class="allGameContainer">
                 <div class="mainHeader">
+                    <div class="streakContainer">
+                        <img
+                            src="media/fire-svgrepo-com.svg"
+                            alt="Fire emoji"
+                        />
+                        <div class="streakTextContainer">
+                            Streak:&nbsp;
+                            <div class="streakCount">10</div>
+                        </div>
+                    </div>
                     <div class="operationName">Multiplication</div>
                     <div class="level">
                         Level&nbsp;
@@ -156,6 +201,12 @@
                     </div>
                 </div>
                 <div class="gameContainer">
+                    <div class="goodBad">
+                        <img
+                            src="media/tick-svgrepo-com.svg"
+                            alt="Tick emoji"
+                        />
+                    </div>
                     <div class="gameProblem">3*3=?</div>
                     <input
                         type="number"
@@ -166,6 +217,16 @@
             </div>
             <div id="divisionContainer" class="allGameContainer">
                 <div class="mainHeader">
+                    <div class="streakContainer">
+                        <img
+                            src="media/fire-svgrepo-com.svg"
+                            alt="Fire emoji"
+                        />
+                        <div class="streakTextContainer">
+                            Streak:&nbsp;
+                            <div class="streakCount">10</div>
+                        </div>
+                    </div>
                     <div class="operationName">Division</div>
                     <div class="level">
                         Level&nbsp;
@@ -177,6 +238,12 @@
                     </div>
                 </div>
                 <div class="gameContainer">
+                    <div class="goodBad">
+                        <img
+                            src="media/tick-svgrepo-com.svg"
+                            alt="Tick emoji"
+                        />
+                    </div>
                     <div class="gameProblem">9/3=?</div>
                     <input
                         type="number"
@@ -185,6 +252,44 @@
                     />
                 </div>
             </div>
+            <div id="demonContainer" class="allGameContainer">
+                <div class="mainHeader">
+                    <div class="streakContainer">
+                        <img
+                            src="media/fire-svgrepo-com.svg"
+                            alt="Fire emoji"
+                        />
+                        <div class="streakTextContainer">
+                            Streak:&nbsp;
+                            <div class="streakCount">10</div>
+                        </div>
+                    </div>
+                    <div class="operationName">Demon</div>
+                    <div class="level">
+                        Level&nbsp;
+                        <div class="levelNumber">1</div>
+                    </div>
+                    <div class="progressBarContainer">
+                        <div class="progressBarPrecent">90%</div>
+                        <div class="progressBar"></div>
+                    </div>
+                </div>
+                <div class="gameContainer">
+                    <div class="goodBad">
+                        <img
+                            src="media/tick-svgrepo-com.svg"
+                            alt="Tick emoji"
+                        />
+                    </div>
+                    <div class="gameProblem">9/3=?</div>
+                    <input
+                        type="number"
+                        class="answerField"
+                        placeholder="Type your answer here"
+                    />
+                </div>
+            </div>
+            <div id="overlay"></div>
             <div id="popupInstructions">
                 <div id="welcomeText">Welcome to Mental Math Game!</div>
                 <ul id="gameDescription">
@@ -196,7 +301,8 @@
                         Advance through 20 levels, each getting progressively
                         more challenging.
                     </li>
-                    <li>Think fast — accuracy and speed both matter!</li>
+                    <li>Streak speeds up your progress!</li>
+                    <li>Demon mode cobines other ones into one!</li>
                     <li>
                         If you need help or want to learn strategies, check out
                         the guide:

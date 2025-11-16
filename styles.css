@@ -68,7 +68,7 @@ main {
     height: 100%;
     width: 100%;
     padding: 5rem;
-    color: #0d1b2a;
+    color: var(--col5);
     text-align: center;
     font-size: 4rem;
 }
@@ -102,6 +102,20 @@ main {
     width: 4rem;
     padding: 1rem;
 }
+/*############################################################################*/
+#guideButtonContainer {
+    position: fixed;
+    top: 90%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--col1);
+    padding: 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+}
 
 /*############################################################################*/
 .allGameContainer {
@@ -111,10 +125,30 @@ main {
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    padding: 48px;
+    position: relative;
+    padding: 3rem;
     border: 12px solid var(--col4);
     border-radius: 16px;
     background-color: var(--col2);
+}
+.streakContainer {
+    position: absolute;
+    top: 4%;
+    right: 4%;
+    display: flex;
+    align-items: flex-end;
+}
+.streakTextContainer {
+    color: #f27d0c;
+    font-size: 2rem;
+    display: flex;
+}
+.streakCount {
+    color: #f27d0c;
+}
+.streakContainer img {
+    width: 3rem;
+    height: 3rem;
 }
 .mainHeader {
     width: 100%;
@@ -126,15 +160,13 @@ main {
 .operationName {
     width: 100%;
     text-align: center;
-    font-size: 64px;
+    font-size: 4rem;
     margin-bottom: 8px;
 }
 .level {
     width: fit-content;
-    font-size: 48px;
+    font-size: 3rem;
     display: flex;
-}
-.levelNumber {
 }
 .progressBarContainer {
     width: 300px;
@@ -163,6 +195,7 @@ main {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
 }
 .gameProblem {
     width: fit-content;
@@ -193,6 +226,16 @@ input[type='number']::-webkit-outer-spin-button {
 input[type='number'] {
     -moz-appearance: textfield;
 }
+.goodBad {
+    position: absolute;
+    bottom: -8%;
+    left: 6%;
+}
+.goodBad img {
+    width: 8rem;
+    height: 8rem;
+    display: none;
+}
 /*############################################################################*/
 #winPage {
     display: none;
@@ -205,6 +248,9 @@ input[type='number'] {
     display: flex;
     text-align: center;
     justify-content: center;
+    color: rgb(0, 224, 0);
+}
+#winText div {
     color: rgb(0, 224, 0);
 }
 #winTypeText {
@@ -223,10 +269,24 @@ input[type='number'] {
     padding: 12px;
     width: fit-content;
     margin-top: 24px;
-    background-color: #0d1b2a;
+    background-color: var(--col1);
     cursor: pointer;
+    border-radius: 8px;
 }
 /*############################################################################*/
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    display: none;
+}
 #popupInstructions {
     position: fixed;
     top: 50%;
@@ -238,6 +298,7 @@ input[type='number'] {
     padding: 3rem;
     border-radius: 16px;
     display: none;
+    z-index: 100;
 }
 #welcomeText {
     font-size: 3rem;
@@ -289,7 +350,12 @@ input[type='number'] {
 /*############################################################################*/
 /*############################################################################*/
 /*############################################################################*/
-@media (max-width: 500px) {
+@media (max-width: 700px) {
+    main {
+        height: fit-content;
+        min-height: 0;
+        padding: 1rem 0;
+    }
     #mainPage {
         padding: 0;
         width: 100%;
@@ -303,5 +369,76 @@ input[type='number'] {
     .mainGameOption {
         width: 280px;
         font-size: 3rem;
+    }
+    /*############################################################################*/
+    #guideButtonContainer {
+        top: 96%;
+        left: 84%;
+    }
+    /*############################################################################*/
+    #welcomeText {
+        font-size: 2rem;
+    }
+    #gameDescription {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+    }
+    #closePopupInput {
+        width: 300px;
+        height: 60px;
+        font-size: 2rem;
+    }
+    /*############################################################################*/
+    .allGameContainer {
+        padding: 1rem 0;
+    }
+    .operationName {
+        font-size: 3rem;
+    }
+    .level {
+        font-size: 2rem;
+    }
+    .progressBarContainer {
+        margin-top: 12px;
+        margin-left: 0;
+    }
+    .gameProblem {
+        padding: 2rem;
+        margin-top: 1rem;
+        font-size: 4rem;
+    }
+    .answerField {
+        width: 80%;
+    }
+    /*############################################################################*/
+    #winPage {
+        font-size: 3rem;
+    }
+    #winText div {
+        color: rgb(0, 224, 0);
+        width: fit-content;
+        white-space: nowrap;
+    }
+    /*############################################################################*/
+    #gameModeText {
+        margin-bottom: 2rem;
+    }
+    .mainGameOption {
+        margin-left: 1.5rem;
+    }
+    .gameOptions {
+        padding: 0.5rem;
+    }
+    /*############################################################################*/
+    .streakContainer {
+        top: 2%;
+        right: 2%;
+    }
+    .streakTextContainer {
+        font-size: 1rem;
+    }
+    .streakContainer img {
+        width: 2rem;
+        height: 2rem;
     }
 }
