@@ -374,14 +374,21 @@ input[type='number'] {
     #guideButtonContainer {
         top: 96%;
         left: 84%;
+        z-index: 999;
     }
     /*############################################################################*/
+    #popupInstructions {
+        padding: 1rem;
+    }
     #welcomeText {
         font-size: 2rem;
     }
     #gameDescription {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         margin-left: 1rem;
+    }
+    #closePopupContainer {
+        margin-top: 1rem;
     }
     #closePopupInput {
         width: 300px;
@@ -427,7 +434,8 @@ input[type='number'] {
         margin-left: 1.5rem;
     }
     .gameOptions {
-        padding: 0.5rem;
+        padding: 4px 0rem;
+        font-size: 1.5rem;
     }
     /*############################################################################*/
     .streakContainer {
