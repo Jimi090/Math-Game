@@ -404,18 +404,19 @@ input[type='number'] {
         margin-top: 0.5rem;
     }
     .level {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     .progressBarContainer {
         margin-top: 12px;
         margin-left: 0;
     }
     .gameProblem {
-        padding: 1rem;
-        margin-top: 1rem;
+        padding: 0.2rem;
+        margin-top: 0.5rem;
         font-size: 4rem;
     }
     .answerField {
+        margin-top: 0;
         width: 80%;
     }
     /*############################################################################*/
@@ -432,6 +433,7 @@ input[type='number'] {
         margin-bottom: 2rem;
     }
     .mainGameOption {
+        margin: 0 auto;
     }
     .gameOptions {
         padding: 4px 0rem;
